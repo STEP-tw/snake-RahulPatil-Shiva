@@ -6,6 +6,9 @@ let numberOfCols=120;
 let animator=undefined;
 
 const animateSnake=function() {
+  if(isTerminated()){
+    window.Reload();
+  }
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
@@ -54,10 +57,28 @@ const createFood=function(numberOfRows,numberOfCols) {
   food=generateRandomPosition(numberOfCols,numberOfRows);
 }
 
-const eatsItself=function(){
+const eatItself=function(){
   let body = snake.getBody();
-  let head = snake.gethead();
+  let head = snake.getHead();
   return body.includes(head);
+}
+
+const isCollidedHori=function(){
+  let head = snake.getHead();
+  return head.x>119 || head.x<1;
+}
+
+const isCollidedVert=function(){
+  let head = snake.getHead();
+  return head.y>59 || head.y<1;
+}
+
+const isCollided=function(){
+  return isCollidedVert() || isCollidedHori();
+}
+
+const isTerminated = function(){
+  return eatItself() || isCollided();
 }
 
 const startGame=function() {
