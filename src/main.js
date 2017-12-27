@@ -7,7 +7,7 @@ let animator=undefined;
 
 const animateSnake=function() {
   if(isTerminated()){
-    window.Reload();
+    window.open('/Users/rahulp/snake-RahulPatil-Shiva/playAgain.html', "_self")
   }
   let oldHead=snake.getHead();
   let oldTail=snake.move();
@@ -65,12 +65,12 @@ const eatItself=function(){
 
 const isCollidedHori=function(){
   let head = snake.getHead();
-  return head.x>119 || head.x<1;
+  return head.x>118 || head.x<1;
 }
 
 const isCollidedVert=function(){
   let head = snake.getHead();
-  return head.y>59 || head.y<1;
+  return head.y>58 || head.y<1;
 }
 
 const isCollided=function(){
