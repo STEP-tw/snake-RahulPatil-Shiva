@@ -54,6 +54,12 @@ const createFood=function(numberOfRows,numberOfCols) {
   food=generateRandomPosition(numberOfCols,numberOfRows);
 }
 
+const eatsItself=function(){
+  let body = snake.getBody();
+  let head = snake.gethead();
+  return body.includes(head);
+}
+
 const startGame=function() {
   createSnake();
   drawGrids(numberOfRows,numberOfCols);
