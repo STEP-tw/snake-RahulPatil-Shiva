@@ -57,12 +57,6 @@ const createFood=function(numberOfRows,numberOfCols) {
   food=generateRandomPosition(numberOfCols,numberOfRows);
 }
 
-const eatItself=function(){
-  let body = snake.getBody();
-  let head = snake.getHead();
-  return body.includes(head);
-}
-
 const isCollidedHori=function(){
   let head = snake.getHead();
   return head.x>118 || head.x<1;
@@ -78,10 +72,10 @@ const isCollided=function(){
 }
 
 const isTerminated = function(){
-  return eatItself() || isCollided();
+  return snake.hasEatenItself() || isCollided();
 }
 
-const startGame=function() {
+const startGame = function(){
   createSnake();
   drawGrids(numberOfRows,numberOfCols);
   drawSnake(snake);

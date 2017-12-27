@@ -23,5 +23,11 @@ Snake.prototype={
   },
   turnRight:function() {
     this.head=this.head.turnRight();
+  },
+  hasEatenItself:function(){
+    let snakeRef=this;
+    return this.body.some(function(tail){
+      return tail.x==snakeRef.head.x && tail.y==snakeRef.head.y;
+    });
   }
 }
